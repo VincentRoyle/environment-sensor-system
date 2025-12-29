@@ -205,3 +205,41 @@ This stage strengthened recall, debugging skills, and independent problem-solvin
 - **Screen recording (7 minutes):**
     https://youtu.be/aJ6cZa5wIOs
 
+
+## Week 5 — Add Threshold Logic
+
+### Ticket: Implement Temperature Rule / Alert
+
+### Description
+This stage adds a conditional rule that triggers an action when a temperature threshold is reached. The chosen action is an LED indicator (on-board LED), which toggles based on the measured temperature.
+
+### Pseudocode
+
+SET threshold_temp_c
+LOOP forever:
+READ temperature
+IF temperature > threshold_temp_c:
+LED = ON
+ELSE:
+LED = OFF
+WAIT
+
+
+### Truth Table
+Assume `T` is current temperature in °C and `X` is the threshold.
+
+| Condition | LED Output |
+|----------|------------|
+| T > X    | ON         |
+| T ≤ X    | OFF        |
+
+### Testing Method
+The threshold was tested by warming the sensor (hand-warming) and observing the LED toggling as the measured temperature crossed the setpoint.
+
+### Acceptance Criteria Review
+- **LED toggles at setpoint:** Achieved using on-board LED indicator  
+- **Truth table documented:** Achieved (table above)  
+- **Threshold configurable:** Achieved via `THRESHOLD_C` variable in code  
+
+### Learning Focus
+This stage reinforced control flow (`if/else`), logical reasoning (truth table), and converting a requirement into configurable, testable code.
