@@ -243,3 +243,38 @@ The threshold was tested by warming the sensor (hand-warming) and observing the 
 
 ### Learning Focus
 This stage reinforced control flow (`if/else`), logical reasoning (truth table), and converting a requirement into configurable, testable code.
+
+## Week 6 — Reliability & Logging
+
+### Ticket: Stabilise and Record Data
+
+### Description
+This stage improves reliability by handling failed reads and recording sensor data for later review. Readings are logged to a CSV file on the Pico.
+
+### Reliability Improvements
+- Added retry logic for failed reads (multiple attempts with a short delay)
+- Added sanity checks to reject obviously invalid values
+- Fail-safe behaviour (LED off and no log entry) if all retries fail
+
+### Logging Approach
+Data is appended to a local CSV file (`dht_log.csv`) with:
+- `ts_s` = timestamp in seconds since the script started
+- temperature (°C)
+- humidity (%)
+- LED state (threshold indicator)
+
+### Soak Test (10 minutes)
+- Ran the logging script continuously for 10 minutes
+- Observed whether any read failures occurred and whether logging continued
+- Confirmed the CSV contained ≥ 10 consistent entries
+
+### Known Issues and Hypotheses
+- **No real wall-clock timestamps:** Pico typically lacks an RTC, so timestamps are recorded as seconds since start.  
+  *Hypothesis:* Using Wi-Fi + NTP (or an RTC module) would enable real date/time.
+- **Occasional DHT timeouts (`ETIMEDOUT`):** DHT sensors can be timing-sensitive and breadboards can be inconsistent.  
+  *Hypothesis:* Improving wiring stability, ensuring proper pull-up on data line, and increasing delay between reads reduces failures.
+- **OLED I²C instability (if used):** OLED detected but long transfers timed out during testing.  
+  *Hypothesis:* Missing/weak I²C pull-ups; adding 4.7kΩ–10kΩ resistors on SDA/SCL would stabilise output.
+- **File system limitations:** Frequent writes can wear flash over time.  
+  *Hypothesis:* Logging less often (e.g., every 30–60s) or buffering writes reduces wear.
+
