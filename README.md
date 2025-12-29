@@ -1,9 +1,3 @@
-# Automation & Scripting Project
-
-This project demonstrates the setup, programming, and integration of hardware components using the **Raspberry Pi Pico W**.  
-It is part of my T Level IT coursework and focuses on developing practical automation and scripting skills through hands-on testing, coding, and component integration.
-
----
 # Environment Sensor System
 
 This project is a Raspberry Pi Pico W–based environment monitoring system developed as part of a T Level IT Automation & Scripting assignment.
