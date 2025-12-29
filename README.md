@@ -158,3 +158,50 @@ The following display methods were identified and evaluated as alternatives:
 ### Learning Focus
 This stage developed understanding of input/output mapping, data transformation, presentation layers, and systems-level thinking in embedded applications.
 
+
+## Week 4 — Rebuild from Scratch
+
+### Ticket: Independent Rebuild of Minimal Functionality
+
+### Description
+This stage focused on independently recreating the core sensor-to-output functionality without referencing previous tutorials or example code. The objective was to demonstrate recall, debugging ability, and autonomy under constraints.
+
+### Rebuild Process
+The system was rebuilt from a blank script and fresh wiring setup. The DHT22 sensor was reconnected to the Raspberry Pi Pico W, and a new MicroPython script was written from memory to read temperature and humidity values and present them via serial output.
+
+No previous project files or tutorials were referenced during the rebuild.
+
+### Errors Encountered and Resolutions
+- **Incorrect GPIO selection:**  
+  Initial readings failed due to using the wrong GPIO pin. This was resolved by verifying the physical wiring and matching it to the correct GPIO number in code.
+- **Intermittent sensor timeouts (`ETIMEDOUT`):**  
+  Occasional read failures were resolved by increasing the delay between sensor reads and ensuring stable power and ground connections.
+- **USB connection resets during testing:**  
+  Resolved by restarting Thonny and re-establishing the MicroPython REPL connection.
+
+These issues were diagnosed through serial error messages and incremental testing.
+
+### Final Functionality
+The rebuilt system successfully:
+- Reads live temperature and humidity data from the DHT22 sensor
+- Outputs formatted readings to the serial console at regular intervals
+
+This confirms that the minimal sensor–output chain functions correctly after a full rebuild.
+
+### Evidence
+- **Screen recording (2 minutes):**  
+  *Link to recording showing rebuild process and live output*  
+  *(To be added / see shared folder)*
+
+### Lessons Learned
+- Rebuilding from memory reinforced understanding of GPIO pin mapping and sensor timing requirements
+- Debugging without tutorials improved confidence in interpreting error messages
+- Incremental testing is critical when working with embedded hardware
+- Serial output is a reliable baseline for verifying system functionality before adding complexity
+
+### Learning Focus
+This stage strengthened recall, debugging skills, and independent problem-solving, demonstrating the ability to recreate working embedded systems under constrained conditions.
+
+- **Screen recording (7 minutes):**
+    https://youtu.be/aJ6cZa5wIOs
+
