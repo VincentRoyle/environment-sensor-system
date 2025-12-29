@@ -315,3 +315,55 @@ main()
 
 ### Learning Focus
 This stage reinforced abstraction, meaningful naming, and maintainability by turning a “working script” into a structured program.
+
+
+## Week 8 — Demo & Defence
+
+### Ticket: Final Presentation & Reflection
+
+### Demonstration Video
+A 2-minute demonstration video showing system operation, explanation, and reflection is available here:  
+**[Video Link – insert here]**
+
+### Final Architecture Overview
+The final system follows a simple, reliable architecture:
+
+[DHT22 Sensor]
+↓
+[read_sensor()]
+↓
+[format_data()]
+↓
+[display_data()] → Serial Output
+↓
+[log_data()] (CSV logging)
+↓
+[LED Indicator] (Threshold alert)
+
+
+### Reliability Confirmation
+The device was operated unattended for over 5 minutes with:
+- consistent sensor readings
+- no crashes or resets
+- stable serial output
+- logging continuing as expected
+
+### Key Design Decisions
+- **Serial output chosen as primary display:** Most reliable and easiest to validate
+- **Functional refactor:** Improved readability, debugging, and future extensibility
+- **Retry + logging logic:** Improved robustness and traceability
+- **OLED documented as limitation:** Investigated, tested, and evaluated honestly
+
+### Known Issues
+- DHT sensors can occasionally time out (`ETIMEDOUT`)
+- Pico lacks real-time clock without NTP/RTC
+- OLED I²C output unstable without additional pull-up resistors
+
+### Future Improvements
+- Add Wi-Fi + NTP for real timestamps
+- Serve readings via a local web interface
+- Add proper I²C pull-ups and re-enable OLED output
+- Log data to cloud service (e.g. ThingSpeak)
+
+### Reflection
+This project demonstrated incremental development, debugging under constraints, and the importance of reliability over complexity. Refactoring and documentation significantly improved code clarity and confidence in system behaviour.
