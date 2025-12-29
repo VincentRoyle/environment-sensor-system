@@ -279,3 +279,39 @@ Data is appended to a local CSV file (`dht_log.csv`) with:
 - **File system limitations:** Frequent writes can wear flash over time.  
   *Hypothesis:* Logging less often (e.g., every 30–60s) or buffering writes reduces wear.
 
+## Week 7 — Refactor & Explain
+
+### Ticket: Modularise and Document Codebase
+
+### Description
+This stage refactored the working sensor/output program into small functions to improve clarity, maintainability, and testing.
+
+### Function Summary
+- `read_sensor()` – reads DHT22 values with retry + sanity checks
+- `format_data()` – converts readings into a formatted output string (includes °F conversion and status)
+- `display_data()` – prints the message and toggles the on-board LED based on the threshold
+
+### Architecture Overview (Function Call Graph)
+
+main()
+├─ read_sensor()
+├─ format_data()
+├─ display_data()
+├─ ensure_csv_header() (optional logging)
+└─ log_data() (optional logging)
+
+
+### Before/After Summary (Intent)
+- **Before:** single loop with reading, formatting, output, and reliability logic mixed together  
+- **After:** separated into named functions so each part has one responsibility:
+  - easier to debug (identify whether failure is read vs format vs output)
+  - easier to extend (swap serial output for OLED/web later)
+  - easier to reuse (logging and threshold logic become optional modules)
+
+### Acceptance Criteria Review
+- **Code runs identically post-refactor:** Achieved (same output loop + LED rule)
+- **Docstrings committed:** Achieved (functions documented with inputs/outputs)
+- **Diagram committed:** Achieved (call graph above)
+
+### Learning Focus
+This stage reinforced abstraction, meaningful naming, and maintainability by turning a “working script” into a structured program.
