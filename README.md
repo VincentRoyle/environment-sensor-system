@@ -323,7 +323,7 @@ This stage reinforced abstraction, meaningful naming, and maintainability by tur
 
 ### Demonstration Video
 A 2-minute demonstration video showing system operation, explanation, and reflection is available here:  
-**[Video Link – insert here]**
+**https://youtu.be/ea6zHPPvNtQ**
 
 ### Final Architecture Overview
 The final system follows a simple, reliable architecture:
