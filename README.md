@@ -121,3 +121,40 @@ The project demonstrates effective incremental development, hardware testing, an
 - Stabilise OLED output using proper I²C pull-up resistors
 - Integrate display output with sensor readings
 - Extend system with data logging or wireless transmission
+
+
+## Week 3 — Data Presentation
+
+### Ticket: Display Sensor Data (OLED or Webpage)
+
+### Description
+The aim of this stage was to present live sensor data in a readable format without requiring inspection or modification of the program code. The serial console was used as the primary presentation layer.
+
+### Implementation
+Live temperature and humidity readings from the DHT22 sensor are displayed continuously via the serial console. The output includes temperature in both Celsius and Fahrenheit, as well as humidity percentage.
+
+This approach allows sensor data to be viewed in real time without relying on additional hardware or display drivers.
+
+### Data Flow Diagram
+[DHT22 Sensor]
+↓
+[MicroPython Script]
+(Read, Convert & Format Data)
+↓
+[Serial Console Output]
+
+
+### Alternative Display Approaches
+The following display methods were identified and evaluated as alternatives:
+- **Serial → OLED (I²C):**  
+  Render sensor readings on an OLED display using an SSD1306 or SH1106 controller.
+- **Serial → Local Webpage (Pico W):**  
+  Serve sensor data via a lightweight HTTP server, allowing readings to be viewed in a web browser on the local network.
+
+### Acceptance Criteria Review
+- **Data visible without IDE interaction:** Achieved via serial console output
+- **Block diagram committed to repository:** Achieved using markdown diagram
+
+### Learning Focus
+This stage developed understanding of input/output mapping, data transformation, presentation layers, and systems-level thinking in embedded applications.
+
