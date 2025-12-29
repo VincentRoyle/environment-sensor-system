@@ -265,6 +265,7 @@ Data is appended to a local CSV file (`dht_log.csv`) with:
 
 ### Soak Test (10 minutes)
 - Ran the logging script continuously for 10 minutes
+- During the 10-minute soak test, the system logged 20 entries at 30-second intervals with occasional retries but no crashes.
 - Observed whether any read failures occurred and whether logging continued
 - Confirmed the CSV contained ≥ 10 consistent entries
 
